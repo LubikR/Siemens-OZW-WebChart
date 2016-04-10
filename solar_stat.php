@@ -168,19 +168,18 @@ echo("</tr>");
 </table>
 <br>
 <?php
-  if ($rok == '2015')
-{
-?>
-
-<a href = 'solar_stat.php?mesic=2014-12'><< 2014-12</a>
-
-<?php
+  if ($rok != '2014') {
+  $odkaz =  date('Y-m',strtotime($mesic ."- 1 year"));
+  echo ("<a href = 'solar_stat.php?mesic=" .$odkaz. "'>");
+  echo ("<< $odkaz");
+  echo ("</a>");
+  echo ("&nbsp&nbsp");
 }
-else {
-?>
-<a href = 'solar_stat.php?mesic=2015-01'>2015-01 >></a>
-
-<?php
-}
-?>
+  if ($rok < date('Y', time())) {
+  $odkaz =  date('Y-m',strtotime($mesic ."+1 1 year"));
+  echo ("<a href = 'solar_stat.php?mesic=" .$odkaz. "'>");
+  echo ("$odkaz >>");
+  echo ("</a>");
+  }
+ ?> 
 </body>
